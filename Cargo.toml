@@ -1,0 +1,19 @@
+[package]
+name = "yjt"
+version = "0.1.0"
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+crossterm = "0.20"
+tui = { version = "0.16", default-features = false, features = ['crossterm'] }
+termion = "1.5"
+anyhow = "1.0"
+toml = "0.5"
+serde_json = "1.0"
+serde_yaml = "0.8"
+serde = "1.0"
+
+[build-dependencies]
+clap = "2.31.2"
