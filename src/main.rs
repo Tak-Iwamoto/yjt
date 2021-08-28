@@ -2,11 +2,11 @@ mod data;
 mod event;
 mod input;
 mod json;
-mod key;
 mod state;
 mod toml;
 mod yaml;
-use std::{io::stdout};
+mod ui;
+use std::io::stdout;
 
 use anyhow::Result;
 use tui::layout::{Alignment, Constraint, Direction, Layout};
@@ -18,8 +18,8 @@ use tui::{
     Terminal,
 };
 
-use crate::event::{Event, Events};
-use crate::key::Key;
+use crate::event::event::{Event, Events};
+use crate::event::key::Key;
 
 fn start_ui() -> Result<()> {
     let stdout = stdout();

@@ -1,6 +1,7 @@
-use crate::key::Key;
 use crossterm::event;
 use std::{sync::mpsc, thread, time::Duration};
+
+use super::key::Key;
 
 #[derive(Debug, Clone, Copy)]
 pub enum Event<I> {
