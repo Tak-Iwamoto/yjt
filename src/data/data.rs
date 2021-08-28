@@ -5,7 +5,7 @@ use std::fmt::Display;
 pub type Array = Vec<Data>;
 pub type Object = HashMap<String, Data>;
 
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum Data {
     Null,
     Bool(bool),
@@ -24,7 +24,7 @@ impl From<bool> for Data {
 
 impl From<&String> for Data {
     fn from(value: &String) -> Self {
-        Data::String(*value)
+        Data::String(value.into())
     }
 }
 

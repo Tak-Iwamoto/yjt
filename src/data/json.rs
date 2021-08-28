@@ -1,6 +1,5 @@
+use crate::data::data::Data;
 use std::collections::HashMap;
-
-use super::Data;
 
 impl From<&serde_json::Value> for Data {
     fn from(json_value: &serde_json::Value) -> Data {
@@ -32,5 +31,22 @@ impl From<&serde_json::Value> for Data {
                 Data::from(result)
             }
         }
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use crate::data::data::Data;
+
+    #[test]
+    fn test_from_json() {
+        let json_str = include_str!("../../tests/test.json");
+        let json_value: serde_json::Value = serde_json::from_str(&json_str).unwrap();
+        let parsed_data = Data::from(&json_value);
+        let is_object = match parsed_data {
+            Data::Object(_v) => true,
+            _ => false,
+        };
+        assert_eq!(is_object, true)
     }
 }
