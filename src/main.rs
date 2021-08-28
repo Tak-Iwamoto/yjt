@@ -1,11 +1,8 @@
 mod data;
 mod event;
 mod input;
-mod json;
 mod key;
 mod state;
-mod toml;
-mod yaml;
 use std::{io::stdout};
 
 use anyhow::Result;
