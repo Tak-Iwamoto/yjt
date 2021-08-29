@@ -1,12 +1,8 @@
 mod data;
 mod event;
 mod input;
-mod json;
 mod key;
-mod state;
-mod toml;
-mod yaml;
-use std::{io::stdout};
+use std::io::stdout;
 
 use anyhow::Result;
 use tui::layout::{Alignment, Constraint, Direction, Layout};
@@ -115,6 +111,7 @@ fn start_ui() -> Result<()> {
     Ok(())
 }
 
-fn main() -> Result<()> {
-    start_ui()
+fn main() {
+    println!("{}", include_str!("../tests/test.json"));
+    // start_ui()
 }
