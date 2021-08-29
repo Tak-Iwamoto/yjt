@@ -78,16 +78,3 @@ impl Display for Data {
         }
     }
 }
-
-// impl From<&JsonValue> for Data {
-//     fn from(json: &JsonValue) -> Data {
-//         match json {
-//            JsonValue::Object(ref object)  => {
-//                let mut m = HashMap::new();
-//                object.into_iter().for_each(|o| m.insert(o.0, o.1));
-//            }
-//         }
-
-//     }
-
-// }

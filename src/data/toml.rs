@@ -34,7 +34,7 @@ mod tests {
     #[test]
     fn test_from_toml() {
         let toml_str = include_str!("../../tests/test.toml");
-        let toml_value: serde_json::Value = toml::from_str(&toml_str).unwrap();
+        let toml_value: toml::Value = toml::from_str(&toml_str).unwrap();
         let parsed_data = Data::from(&toml_value);
         let is_object = match parsed_data {
             Data::Object(_v) => true,
