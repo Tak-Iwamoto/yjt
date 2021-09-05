@@ -1,4 +1,5 @@
 use crate::data::data::Data;
+use anyhow::Result;
 use std::collections::HashMap;
 
 impl From<&toml::Value> for Data {
@@ -27,15 +28,31 @@ impl From<&toml::Value> for Data {
     }
 }
 
+pub fn parse_toml(toml_str: &str) -> Result<Data> {
+    let parsed: toml::Value = toml::from_str(toml_str)?;
+    Ok(Data::from(&parsed))
+}
+
 #[cfg(test)]
 mod tests {
-    use crate::data::data::Data;
+    use crate::data::{toml::parse_toml, Data};
 
     #[test]
     fn test_from_toml() {
         let toml_str = include_str!("../../tests/test.toml");
         let toml_value: toml::Value = toml::from_str(&toml_str).unwrap();
         let parsed_data = Data::from(&toml_value);
+        let is_object = match parsed_data {
+            Data::Object(_v) => true,
+            _ => false,
+        };
+        assert_eq!(is_object, true)
+    }
+
+    #[test]
+    fn test_parse_toml() {
+        let toml_str = include_str!("../../tests/test.toml");
+        let parsed_data = parse_toml(toml_str).unwrap();
         let is_object = match parsed_data {
             Data::Object(_v) => true,
             _ => false,

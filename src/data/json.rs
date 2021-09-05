@@ -1,4 +1,5 @@
 use crate::data::Data;
+use anyhow::Result;
 use std::collections::HashMap;
 
 impl From<&serde_json::Value> for Data {
@@ -32,6 +33,11 @@ impl From<&serde_json::Value> for Data {
             }
         }
     }
+}
+
+pub fn parse_json(json_str: &str) -> Result<Data> {
+    let json: serde_json::Value = serde_json::from_str(json_str)?;
+    Ok(Data::from(&json))
 }
 
 #[cfg(test)]

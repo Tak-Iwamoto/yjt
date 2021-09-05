@@ -9,5 +9,5 @@ pub fn build_cli() -> App<'static> {
                 .short('f')
                 .takes_value(true),
         )
-        .arg(Arg::new("input").index(1))
+        .arg(Arg::new("input_path").index(1))
 }

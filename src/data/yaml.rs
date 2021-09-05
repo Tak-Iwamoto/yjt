@@ -1,3 +1,5 @@
+use anyhow::Result;
+
 use crate::data::data::Data;
 use std::collections::HashMap;
 
@@ -36,9 +38,14 @@ impl From<&serde_yaml::Value> for Data {
     }
 }
 
+pub fn parse_yaml(yaml_str: &str) -> Result<Data> {
+    let yaml: serde_yaml::Value = serde_yaml::from_str(yaml_str)?;
+    Ok(Data::from(&yaml))
+}
+
 #[cfg(test)]
 mod tests {
-    use crate::data::data::Data;
+    use crate::data::Data;
 
     #[test]
     fn test_from_serde_yaml() {
