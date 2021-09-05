@@ -1,4 +1,4 @@
-use crate::data::data::Data;
+use crate::data::Data;
 use std::collections::HashMap;
 
 impl From<&serde_json::Value> for Data {
@@ -36,7 +36,7 @@ impl From<&serde_json::Value> for Data {
 
 #[cfg(test)]
 mod tests {
-    use crate::data::data::Data;
+    use crate::data::Data;
 
     #[test]
     fn test_from_json() {

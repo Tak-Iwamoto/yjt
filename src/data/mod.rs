@@ -1,4 +1,6 @@
-pub mod data;
-pub mod json;
-pub mod toml;
-pub mod yaml;
+mod data;
+pub use self::data::Data;
+
+mod json;
+mod toml;
+mod yaml;
